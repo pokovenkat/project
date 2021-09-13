@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Registration Form</title>
+<style type="text/css">
+*{
+margin:0;
+padding: 0;
+}
+body{
+ background: url("images/r.jpg");
+ background-size: 100%;
+}
+
+div.main{
+width:400px;
+margin:100px auto 0px auto;
+}
+h2{
+text-align: center;
+padding: 20px;
+font-family: sans-serif;
+}
+div.register{
+background-color: rgba(0,0,0,0.5);
+width: 100%;
+font-size: 18px;
+border-radius:10px;
+border:1px soid  rgba(255,255,255,0.3);
+box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+color:#fff;
+ 
+}
+form#register{
+margin:40px;
+}
+label{
+font-family: sans-serif;
+font-size: 18px;
+font-style: italic;
+}
+input#name{
+  width: 300px;
+  border: 1px solid #ddd;
+  boder-radius: 3px;
+  outline: 0;
+  padding: 7px;
+  background-color: #fff;
+  box-shadow: inset 1px 1px 5px rgba(0,0,0,0.3);
+}
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+h1{
+  margin-top: 20px;
+  font-size: 50px;
+  color: White;
+
+}
+
+
+</style>
+
+</head>
+<body>
+<center><h1><p><b> </b></p></h1></center>
+<center><h4><p> </p></h4></center>
+<div class="main">
+
+<div class="register">
+<br><br>
+<h3><center>Register Here</center></h3>
+<form action="GlobalServlet?choice=register" id="register" method="post">
+<lable>Full Name:	</lable>
+<br>
+<input type="text" name="nm" id="name" placeholder="Enter your full name"> 
+<br><br>
+
+<lable> Password:	</lable>
+<br>
+<input type="password" name="pw" id="name" placeholder="Create new password">
+<br><br>
+
+<lable> Email:	</lable>
+<br>
+<input type="email" name="em" id="name" placeholder="Enter your  valid email" c><td><div id="r"></div></td>
+<br><br>
+
+<lable> Address:	</lable>
+<br>
+<input type="text" name="ad" id="name" placeholder="Enter Your address">
+<br><br>
+
+<center><button class="button" name="submit" id="submit">Submit</button></center>
+<br><br>
+<h5>Already have acoount..?</h5>
+<a style="color:MediumSeaGreen;" href="login.html">Login Here</a>
+<br><br>
+</form>
+</div>
+</div>
+</body>
+
+<script type="text/javascript">
+		
+	function validate(){
+		const v1=document.getElementById("a").value;
+		
+		//const is for constant
+		//var variable scope will be entire function , even i declare var inside if but can use outside of if also but within function
+		//if let will be declared inside if then we can not use it outside of if. because scope will be block scope
+		
+		if(v1.length==0){
+			var v=4;
+			let v5=9;
+			document.getElementById("rr").innerHTML="mandatory field can not be blank";
+			//document.getElementById("a").focus();
+		}
+		else{
+			if(v1.charAt(0).uppercase()){
+				
+			}
+			else{
+				alert("first letter of name should be in upper case");
+			}
+			document.getElementById("rr").innerHTML="";
+		}
+	}
+	function validate1(){
+		var v2=document.getElementById("b").value;
+		if(v2.length<4){
+			document.getElementById("rr1").innerHTML="password should not be less than 4 character";
+			//document.getElementById("a").focus();
+		}
+		if(v2.length>=4 && v2.length<6){
+			document.getElementById("rr1").innerHTML="<font color=red>weak</font>";
+			
+		}
+		if(v2.length>=6 && v2.length<8){
+			document.getElementById("rr1").innerHTML="<font color=blue>medium</font>";
+			
+		}
+		if(v2.length>=8 ){
+			document.getElementById("rr1").innerHTML="<font color=green>strong</font>";
+			
+		}
+		
+	}
+	
+	function checkmail(){
+		var v2=document.getElementById("ee").value;
+		
+		var xhr=new XMLHttpRequest();
+		xhr.open("GET","CheckEmail?email="+v2,true);
+		xhr.send();
+		
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4){
+				var vv=xhr.responseText;
+				document.getElementById("rr2").innerHTML=vv;
+				
+			}
+		}
+	}
+	
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
